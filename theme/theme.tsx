@@ -13,7 +13,6 @@ export default function Layout ({
   children,
   ...nextraThemeProps
 }: NextraThemeLayoutProps) {
-  // console.dir(nextraThemeProps, { depth: null });
   const { locale = DEFAULT_LOCALE, defaultLocale } = useRouter();
   const fsPath = useFSRoute();
   const { filePath, pageMap, frontMatter, headings, timestamp } =
@@ -38,21 +37,6 @@ export default function Layout ({
         route: fsPath
       }),
     [pageMap, locale, defaultLocale, fsPath]
-  );
-
-  console.dir(
-    {
-      activeType,
-      activeIndex,
-      activeThemeContext,
-      activePath,
-      topLevelNavbarItems,
-      docsDirectories,
-      flatDirectories,
-      flatDocsDirectories,
-      directories
-    },
-    { depth: null }
   );
 
   const mdxComponents = useMDXComponents({
@@ -81,7 +65,6 @@ export default function Layout ({
           asPopover={false}
           includePlaceholder={true}
         />
-        <aside className="sidebar"></aside>
         {/* Main Content */}
         <MDXProvider components={mdxComponents}>
           <article className="main-content">{children}</article>
